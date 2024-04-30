@@ -1,0 +1,27 @@
+{
+  // 使用 IntelliSense 了解相关属性。
+  // 悬停以查看现有属性的描述。
+  // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      // 任务的名称
+      "name": "Nest.js",
+      // 类型
+      "type": "node",
+      "request": "launch",
+      // 不自动打开内部终端
+      "internalConsoleOptions": "neverOpen",
+      // 使用外部终端工具
+      "console": "externalTerminal",
+      // 运行的程序
+      "runtimeExecutable": "npm",
+      // 运行程序的版本
+      "runtimeVersion": "16.20.1",
+      // 运行参数
+      "runtimeArgs": ["run-script", "start:debug"],
+      // 要跳过的文件
+      "skipFiles": ["<node_internals>/**"]
+    }
+  ]
+}
