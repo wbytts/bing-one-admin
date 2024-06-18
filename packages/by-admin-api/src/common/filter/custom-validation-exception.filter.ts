@@ -16,7 +16,7 @@ export class CustomValidationExceptionFilter implements ExceptionFilter {
     const httpStatus = exception instanceof HttpException ? exception.getStatus() : HttpStatus.INTERNAL_SERVER_ERROR;
 
     // 记录日志
-    // this.logger.error(JSON.stringify(exception));
+    this.logger.error(JSON.stringify(exception));
 
     // 响应错误信息
     response.status(httpStatus).json({
