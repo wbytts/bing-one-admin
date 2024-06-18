@@ -19,6 +19,9 @@ export class CaptchaController {
     //res.send(captcha.data);
     const captchaId = uuidv4()
 
+    // 将验证码缓存进 Redis, 60秒有效期
+    await this.redis.setEx(`captcha-${captchaId}`, 60, captcha.text);
+
     return {
       code: 200,
       data: {

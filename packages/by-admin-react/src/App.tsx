@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { RouterProvider } from 'react-router-dom'
 import { ConfigProvider, theme, App as AntdApp } from 'antd'
 import AntdGlobal from './utils/AntdGlobal'
@@ -24,6 +25,14 @@ function App() {
       </AntdApp>
     </ConfigProvider>
   )
+=======
+function App() {
+  return (
+    <>
+      <div>呐呐</div>
+    </>
+  );
+>>>>>>> 899eeec17999c4f81031134f6006889906b1dbf9
 }
 
-export default App
+export default App;

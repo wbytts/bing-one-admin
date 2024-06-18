@@ -14,7 +14,9 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "element-plus": "^2.7.2",
     "pinia": "^2.1.7",
+    "sass": "^1.75.0",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
   },
@@ -35,8 +37,14 @@
     "npm-run-all2": "^6.1.2",
     "prettier": "^3.2.5",
     "typescript": "~5.4.0",
+    "unplugin-auto-import": "^0.17.5",
+    "unplugin-icons": "^0.18.5",
+    "unplugin-vue-components": "^0.26.0",
+    "unplugin-vue-router": "^0.8.6",
     "vite": "^5.2.8",
+    "vite-plugin-svg-icons": "^2.0.1",
     "vite-plugin-vue-devtools": "^7.0.25",
+    "vite-plugin-vue-layouts": "^0.11.0",
     "vitest": "^1.4.0",
     "vue-tsc": "^2.0.11"
   }
