@@ -30,7 +30,7 @@ async function bootstrap() {
 
   // main.ts -> Factory -> AppModule -> 其他
 
-  // 将类型传递给 NestFactory.create() 函数时，如下例所示，app 对象将具有专用于该特定平台的函数。
+  // 将类型传递给 NestFactory.create() 函数时，如下例所示，app 对象将具有专用于该特定平台的函数
   // 底层平台默认采用了 Express
   // 注意，除非您确实要访问底层平台 API，否则无需指定类型
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {

@@ -232,6 +232,7 @@ export class TestController implements OnModuleInit, OnModuleDestroy, OnApplicat
   @Get("/typeorm/test/list")
   async typeorm_test_list() {
     const result = await this.testRepository.find();
+
     return result;
   }
 

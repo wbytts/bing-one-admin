@@ -1,18 +1,18 @@
-import {Global, Logger, Module} from '@nestjs/common';
-import {AppController} from './app.controller';
-import {AppService} from './app.service';
-import {ServeStaticModule} from '@nestjs/serve-static';
-import {TypeOrmModule} from '@nestjs/typeorm';
-import {createClient} from 'redis';
-import {TestModule} from './modules/test/test.module';
-import {UserModule} from './modules/user/user.module';
-import {ConfigModule} from '@nestjs/config';
-import {CollectModule} from './modules/collect/collect.module';
-import {serverStaticParams} from './core/static';
-import {configParams} from './core/config';
-import {typeOrmModuleOptions} from './core/orm';
-import {AuthModule} from './modules/auth/auth.module';
-import {SystemModule} from "./modules/system/system.module";
+import { Global, Logger, Module } from '@nestjs/common';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { createClient } from 'redis';
+import { TestModule } from './modules/test/test.module';
+import { UserModule } from './modules/user/user.module';
+import { ConfigModule } from '@nestjs/config';
+import { CollectModule } from './modules/collect/collect.module';
+import { serverStaticParams } from './core/static';
+import { configParams } from './core/config';
+import { typeOrmModuleOptions } from './core/orm';
+import { AuthModule } from './modules/auth/auth.module';
+import { SystemModule } from "./modules/system/system.module";
 import { CaptchaModule } from "./modules/captcha/captcha.module";
 
 @Global()
@@ -36,11 +36,11 @@ import { CaptchaModule } from "./modules/captcha/captcha.module";
       async useFactory() {
         const client = createClient({
           socket: {
-            host: 'wbytts.cn',
-            port: 9902
+            host: '127.0.0.1',
+            port: 6379
           },
-          database: 6,
-          password: 'xd123qwe'
+          database: 0,
+          password: '123'
         });
         await client.connect();
         return client;
