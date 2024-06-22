@@ -1,6 +1,5 @@
-<<<<<<< HEAD
 import { RouterProvider } from 'react-router-dom'
-import { ConfigProvider, theme, App as AntdApp } from 'antd'
+import { ConfigProvider, theme, App as AntdApp, ThemeConfig } from 'antd'
 import AntdGlobal from './utils/AntdGlobal'
 import router from '@/router'
 import './App.css'
@@ -10,29 +9,30 @@ function App() {
 
   const isDark = false
 
-  const themeConfig = {
+  const antdThemeConfig: ThemeConfig = {
+    // 定制全局token
     token: {
-      colorPrimary: '#ed6c00'
+      colorPrimary: '#ed6c00',
+    },
+    // 定制组件token
+    components: {
+      Layout: {
+        lightSiderBg: "skyblue", // 亮色主题侧边栏背景色
+      },
+      Menu: {
+      },
     },
     algorithm: isDark ? theme.darkAlgorithm : theme.defaultAlgorithm
   }
 
   return (
-    <ConfigProvider theme={themeConfig}>
+    <ConfigProvider theme={antdThemeConfig}>
       <AntdApp>
         <AntdGlobal />
         <RouterProvider router={router}></RouterProvider>
       </AntdApp>
     </ConfigProvider>
   )
-=======
-function App() {
-  return (
-    <>
-      <div>呐呐</div>
-    </>
-  );
->>>>>>> 899eeec17999c4f81031134f6006889906b1dbf9
 }
 
 export default App;

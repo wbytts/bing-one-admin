@@ -7,7 +7,7 @@ type FormFields = {
   password: string,
 };
 
-const Login: React.FC = () => {
+const LoginPage: React.FC = () => {
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm<FormFields>();
   // register 用于绑定状态和表单元素
@@ -47,5 +47,5 @@ const Login: React.FC = () => {
   </div>
 }
 
-export default Login
+export default LoginPage
 

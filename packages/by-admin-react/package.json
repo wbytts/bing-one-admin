@@ -1,5 +1,5 @@
 {
-  "name": "by-react-admin-common",
+  "name": "by-admin-react",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,7 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-<<<<<<< HEAD
     "@ant-design/icons": "^5.3.7",
     "@ant-design/pro-components": "^2.7.10",
     "@hookform/resolvers": "^3.6.0",
@@ -20,22 +19,17 @@
     "dayjs": "^1.11.11",
     "echarts": "^5.5.0",
     "form-render": "^2.4.4",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-hook-form": "^7.52.0",
-    "react-router-dom": "^6.23.1",
-    "sass": "^1.77.5",
-    "styled-components": "^6.1.11",
-    "yup": "^1.4.0",
-=======
-    "antd": "^5.16.5",
     "immer": "^10.1.1",
     "lodash": "^4.17.21",
     "ramda": "^0.29.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.52.0",
+    "react-router-dom": "^6.23.1",
     "rxjs": "^7.8.1",
->>>>>>> 899eeec17999c4f81031134f6006889906b1dbf9
+    "sass": "^1.77.5",
+    "styled-components": "^6.1.11",
+    "yup": "^1.4.0",
     "zustand": "^4.5.2"
   },
   "devDependencies": {
@@ -45,6 +39,8 @@
     "@types/react-dom": "^18.2.22",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@typescript-eslint/parser": "^7.2.0",
+    "@unocss/preset-rem-to-px": "^0.61.0",
+    "@unocss/preset-tagify": "^0.61.0",
     "@vitejs/plugin-react": "^4.2.1",
     "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.34.2",

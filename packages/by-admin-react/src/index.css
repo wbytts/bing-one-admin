@@ -6,13 +6,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-<<<<<<< HEAD
-body, html {
-  padding: 0;
-  margin: 0;
-=======
 html, body {
   margin: 0;
   padding: 0;
->>>>>>> 899eeec17999c4f81031134f6006889906b1dbf9
 }
