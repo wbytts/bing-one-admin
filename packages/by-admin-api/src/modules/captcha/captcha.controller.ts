@@ -2,13 +2,16 @@ import { Body, Controller, Get, Inject, Post, Req, Res } from "@nestjs/common";
 import * as svgCaptcha from 'svg-captcha';
 import { RedisClientType } from "redis";
 import { v4 as uuidv4 } from 'uuid';
+import { ApiOperation, ApiTags } from "@nestjs/swagger";
 
+@ApiTags("验证码")
 @Controller("captcha")
 export class CaptchaController {
 
   @Inject("REDIS_CLIENT")
   private readonly redis: RedisClientType;
 
+  @ApiOperation({ summary: "生成验证码" })
   @Post("/common")
   // @Res() res, @Req() req
   async generateCaptcha() {
@@ -32,6 +35,7 @@ export class CaptchaController {
     }
   }
 
+  @ApiOperation({ summary: "校验 - 验证码" })
   @Post('verify')
   verifyCaptcha(@Body() body, @Req() req) {
     const { captchaText } = body;

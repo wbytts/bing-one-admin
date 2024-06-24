@@ -12,14 +12,14 @@ export class UrlController {
 
   @ApiOperation({ summary: '新增URL' })
   @Post('/url/create')
-  urlCreate(@Body() params: CreateUrlDto) {
-
-    return '';
+  async urlCreate(@Body() params: CreateUrlDto) {
+    await this.urlService.addUrl(params);
+    return '添加成功!';
   }
 
   @ApiOperation({ summary: '查询URL' })
   @Post('/url/retrieve')
-  async urlRetrieve(@Body() params: { title: string }) {
+  async urlRetrieve(@Body() params: { title?: string }) {
     const urls = await this.urlService.queryAll();
     return {
       code: 200,

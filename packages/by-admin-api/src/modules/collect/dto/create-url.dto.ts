@@ -1,3 +1,5 @@
 export class CreateUrlDto {
-  name: string;
+  title: string;
+  url: string;
+  remark?: string;
 }
