@@ -25,4 +25,19 @@ export class UrlService {
   async queryAll() {
     return await this.urlRepository.find();
   }
+
+  async removeUrl(id) {
+    const item = await this.urlRepository.findOneBy({ id })
+    if (item) {
+      await this.urlRepository.remove(item);
+    }
+  }
+
+  async updateUrl(params) {
+    const item = await this.urlRepository.findOneBy({ id: params.id })
+    item.title = params.title
+    item.url = params.url
+    item.remark = params.remark
+    await this.urlRepository.save(item)
+  }
 }

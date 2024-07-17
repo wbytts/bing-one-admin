@@ -33,13 +33,15 @@ export class UrlController {
 
   @ApiOperation({ summary: '修改URL' })
   @Post('/url/update')
-  urlUpdate() {
-    return '';
+  async urlUpdate(params: CreateUrlDto) {
+    await this.urlService.updateUrl(params)
+    return '修改成功';
   }
 
   @ApiOperation({ summary: '删除URL' })
   @Post('/url/delete')
-  urlDelete() {
-    return '';
+  async urlDelete(params: { id: string }) {
+    await this.urlService.removeUrl(params.id)
+    return '删除成功';
   }
 }

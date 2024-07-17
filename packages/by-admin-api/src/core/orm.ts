@@ -34,7 +34,9 @@ export const typeOrmModuleOptions = {
   ...typeOrmConnectionOptions,
   extra: {
     authPlugin: "sha256_password",
-    idleTimeoutMillis: 30 * 1000 // 设置连接池的空闲超时时间为 30 秒
+    connectionLimit: 10, // 连接池中最大连接数
+    connectTimeout: 10000, // 连接超时事件
+    idleTimeoutMillis: 30 * 1000, // 闲置连接超时时间, 设置连接池的空闲超时时间为 30 秒
   }
 };
 

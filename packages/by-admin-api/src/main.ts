@@ -60,7 +60,7 @@ async function bootstrap() {
   generateDocument(app);
 
   // 跨域相关配置
-  // configCors(app);
+  configCors(app);
 
   // session 中间件
   app.use(expressSessionMiddleware);

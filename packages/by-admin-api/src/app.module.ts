@@ -32,6 +32,8 @@ import { CaptchaModule } from "./modules/captcha/captcha.module";
   providers: [
     AppService,
     {
+      // D:\soft\redis\redis-windows-6.2.6.4
+      // redis-server.exe redis.conf
       provide: 'REDIS_CLIENT',
       async useFactory() {
         const client = createClient({

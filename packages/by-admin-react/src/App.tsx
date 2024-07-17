@@ -19,8 +19,7 @@ function App() {
       Layout: {
         lightSiderBg: "skyblue", // 亮色主题侧边栏背景色
       },
-      Menu: {
-      },
+      Menu: {},
     },
     algorithm: isDark ? theme.darkAlgorithm : theme.defaultAlgorithm
   }
@@ -28,7 +27,7 @@ function App() {
   return (
     <ConfigProvider theme={antdThemeConfig}>
       <AntdApp>
-        <AntdGlobal />
+        <AntdGlobal/>
         <RouterProvider router={router}></RouterProvider>
       </AntdApp>
     </ConfigProvider>
