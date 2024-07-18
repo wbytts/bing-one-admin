@@ -38,11 +38,11 @@ import { CaptchaModule } from "./modules/captcha/captcha.module";
       async useFactory() {
         const client = createClient({
           socket: {
-            host: '127.0.0.1',
-            port: 6379
+            host: 'wbytts.cn', // '127.0.0.1',
+            port: 9902, // 6379
           },
           database: 0,
-          password: '123'
+          // password: '123'
         });
         await client.connect();
         return client;
