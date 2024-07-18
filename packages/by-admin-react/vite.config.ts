@@ -2,13 +2,14 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import UnoCSS from "unocss/vite";
 import path from "path";
+import TurboConsole from "unplugin-turbo-console/vite";
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    // 支持 React 开发
-    react(),
+    react(), // 支持 React 开发
     UnoCSS(),
+    TurboConsole({}),
   ],
 
   resolve: {
@@ -24,7 +25,9 @@ export default defineConfig({
     port: 8888,
     proxy: {
       "/by-admin-api": {
+        // 丙祎家的服务
         target: "http://wbytts.w1.luyouxia.net",
+        // 本地服务
         //target: "http://127.0.0.1:3000",
         rewrite: (p) => p.replace(/^\/by-admin-api/, ""),
       },

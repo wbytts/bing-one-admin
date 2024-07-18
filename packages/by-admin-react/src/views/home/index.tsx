@@ -3,7 +3,7 @@ import { FC } from "react";
 const HomePage: FC = () => {
   let x = 3;
 
-  console.log();
+  console.log("HomePage");
 
   return (
     <div>
