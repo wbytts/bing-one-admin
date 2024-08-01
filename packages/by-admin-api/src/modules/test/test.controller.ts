@@ -20,17 +20,17 @@ import {
   UploadedFile,
   HttpException,
   UnauthorizedException
-} from "@nestjs/common";
-import { TestService } from "./test.service";
-import { ApiOperation, ApiTags } from "@nestjs/swagger";
-import { RedisClientType } from "redis";
-import { CreatePersonDto } from "./dto/test.dto";
-import FormUrlEncodedParams from "./params/form-urlencoded.param";
-import { AnyFilesInterceptor, FileInterceptor } from "@nestjs/platform-express";
-import { Express } from "express";
-import { InjectEntityManager, InjectRepository } from "@nestjs/typeorm";
-import { EntityManager, Repository } from "typeorm";
-import { Test } from "./entities/test.entity";
+} from '@nestjs/common';
+import { TestService } from './test.service';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { RedisClientType } from 'redis';
+import { CreatePersonDto } from './dto/test.dto';
+import FormUrlEncodedParams from './params/form-urlencoded.param';
+import { AnyFilesInterceptor, FileInterceptor } from '@nestjs/platform-express';
+import { Express } from 'express';
+import { InjectEntityManager, InjectRepository } from '@nestjs/typeorm';
+import { EntityManager, Repository } from 'typeorm';
+import { Test } from './entities/test.entity';
 
 // applyDecorators：组合多个装饰器
 function OptionalInject(name) {
@@ -40,13 +40,13 @@ function OptionalInject(name) {
 // createParamDecorator：定义参数装饰器
 function CustomParamsD() {
   return createParamDecorator((data, ctx) => {
-    return "asd";
+    return 'asd';
   });
 }
 
-@ApiTags("测试")
+@ApiTags('测试')
 // Controller 只需要被注入，所以 nest 单独给它加了 @Controller 的装饰器。
-@Controller("test")
+@Controller('test')
 export class TestController implements OnModuleInit, OnModuleDestroy, OnApplicationBootstrap, OnApplicationShutdown, BeforeApplicationShutdown {
   // 构造函数注入
   // constructor(private readonly testService: TestService) {}
@@ -58,20 +58,20 @@ export class TestController implements OnModuleInit, OnModuleDestroy, OnApplicat
   @Inject()
   private readonly TestService1: TestService;
 
-  @Inject("person")
+  @Inject('person')
   private readonly person: { name: string; age: string };
 
-  @Inject("person2")
+  @Inject('person2')
   private readonly person2: { name: string; age: string };
 
   @Optional() // 如果没有 provider 注入会出错，但如果标注了 Optional 可选的，就可以不存在
-  @Inject("person3")
+  @Inject('person3')
   private readonly person3: { name: string; age: string };
 
-  @OptionalInject("person4")
+  @OptionalInject('person4')
   private readonly person4: { name: string; age: string };
 
-  @Inject("REDIS_CLIENT")
+  @Inject('REDIS_CLIENT')
   private readonly redis: RedisClientType;
 
   @InjectEntityManager()
@@ -82,119 +82,119 @@ export class TestController implements OnModuleInit, OnModuleDestroy, OnApplicat
 
   // 生命周期
   onModuleInit() {
-    console.log("==>", "模块初始化");
+    console.log('==>', '模块初始化');
   }
 
   onModuleDestroy() {
-    console.log("==>", "模块销毁");
+    console.log('==>', '模块销毁');
   }
 
   onApplicationBootstrap() {
-    console.log("==>", "应用启动");
+    console.log('==>', '应用启动');
   }
 
   onApplicationShutdown(signal?: string) {
-    console.log("==>", "应用停止");
+    console.log('==>', '应用停止');
   }
 
   beforeApplicationShutdown(signal?: string) {
-    console.log("==>", "应用关闭之前");
+    console.log('==>', '应用关闭之前');
   }
 
-  @ApiOperation({ summary: "基本接口测试" })
-  @Get("/test1")
+  @ApiOperation({ summary: '基本接口测试' })
+  @Get('/test1')
   // 在处理函数的签名中使用 @Req() 装饰器，指示 Nest 将请求对象注入处理程序。
   // Request 对象：代表 HTTP 请求，并具有查询字符串，请求参数参数，HTTP 标头（HTTP header） 和 正文（HTTP body）的属性等等
   test(): string {
-    return "Hello1";
+    return 'Hello1';
   }
 
   // 获取 URL param
-  @ApiOperation({ summary: "GET路径参数" })
-  @Get("/test_get_url_param/:val")
-  test_get_url_param(@Param("val") val) {
-    return "val = " + val;
+  @ApiOperation({ summary: 'GET路径参数' })
+  @Get('/test_get_url_param/:val')
+  test_get_url_param(@Param('val') val) {
+    return 'val = ' + val;
   }
 
   // 获取 form urlencoded 参数
-  @ApiOperation({ summary: "form urlencoded 参数" })
-  @Get("/test_form_urlencoded")
+  @ApiOperation({ summary: 'form urlencoded 参数' })
+  @Get('/test_form_urlencoded')
   test_form_urlencoded() {
-    return "";
+    return '';
   }
 
   // 获取 form data 参数
-  @ApiOperation({ summary: "form-data参数" })
-  @Get("/test_form_data")
+  @ApiOperation({ summary: 'form-data参数' })
+  @Get('/test_form_data')
   test_form_data() {
-    return "";
+    return '';
   }
 
   // 获取 application/json 参数
-  @ApiOperation({ summary: "application/json参数" })
-  @Get("/test_application_json")
+  @ApiOperation({ summary: 'application/json参数' })
+  @Get('/test_application_json')
   test_application_json() {
-    return "";
+    return '';
   }
 
-  @ApiOperation({ summary: "redis测试: 写" })
-  @Post("/test_redis_01")
+  @ApiOperation({ summary: 'redis测试: 写' })
+  @Post('/test_redis_01')
   async test_redis_01(@Body() params: { name: string; age: number }) {
     console.log(params);
-    await this.redis.set("name", params.name);
-    await this.redis.set("age", params.age);
-    return "success";
+    await this.redis.set('name', params.name);
+    await this.redis.set('age', params.age);
+    return 'success';
   }
 
-  @ApiOperation({ summary: "redis测试: 读" })
-  @Get("/test_redis_02")
+  @ApiOperation({ summary: 'redis测试: 读' })
+  @Get('/test_redis_02')
   async test_redis_02() {
-    const name = await this.redis.get("name");
-    const age = await this.redis.get("age");
+    const name = await this.redis.get('name');
+    const age = await this.redis.get('age');
     return { name, age };
   }
 
-  @ApiOperation({ summary: "参数校验测试" })
-  @Post("/test_class_validator_1")
+  @ApiOperation({ summary: '参数校验测试' })
+  @Post('/test_class_validator_1')
   test_class_validator_1(@Body() createPersonDto: CreatePersonDto) {
-    return "111";
+    return '111';
   }
 
-  @ApiOperation({ summary: "视图模板测试" })
-  @Get("/hbs/001")
-  @Render("hbs-001")
+  @ApiOperation({ summary: '视图模板测试' })
+  @Get('/hbs/001')
+  @Render('hbs-001')
   test_hbs_001() {
     return {
-      text: "你好啊",
+      text: '你好啊',
       obj: {
-        name: "张三",
+        name: '张三',
         age: 18
       }
     };
   }
 
-  @ApiOperation({ summary: "GET查询参数" })
-  @Get("/test_http_query_params")
-  test_http_query_params(@Query("x") x: number, @Query("y") y: number) {
+  @ApiOperation({ summary: 'GET查询参数' })
+  @Get('/test_http_query_params')
+  test_http_query_params(@Query('x') x: number, @Query('y') y: number) {
     return `x = ${x}, y = ${y}`;
   }
 
-  @ApiOperation({ summary: "POST表单参数" })
-  @Post("/test_http_form_urlencoded")
+  @ApiOperation({ summary: 'POST表单参数' })
+  @Post('/test_http_form_urlencoded')
   test_http_form_urlencoded(@Body() params: FormUrlEncodedParams) {
     return `【${JSON.stringify(params)}】`;
   }
 
-  @ApiOperation({ summary: "POST application/json 参数" })
-  @Post("/test_http_json")
+  @ApiOperation({ summary: 'POST application/json 参数' })
+  @Post('/test_http_json')
   test_http_json(@Body() params: FormUrlEncodedParams) {
     return `【test_http_json --- ${JSON.stringify(params)}】`;
   }
 
-  @ApiOperation({ summary: "文件上传测试" })
-  @Post("/test_http_form_data")
+  @ApiOperation({ summary: '文件上传测试' })
+  @Post('/test_http_form_data')
   // @UseInterceptors(AnyFilesInterceptor({ dest: "uploads/" }))
-  @UseInterceptors(FileInterceptor("file", { dest: "uploads/" }))
+  @UseInterceptors(FileInterceptor('file', { dest: 'uploads/' }))
   test_http_form_data(
     @Body() params: { x: number; y: number },
     // @UploadedFiles() files: Array<Express.Multer.File>
@@ -205,7 +205,7 @@ export class TestController implements OnModuleInit, OnModuleDestroy, OnApplicat
       file.originalname = decodeURIComponent(escape(file.originalname));
     }
 
-    return { params, file, test: "你好啊" };
+    return { params, file, test: '你好啊' };
   }
 
   /*
@@ -228,31 +228,31 @@ export class TestController implements OnModuleInit, OnModuleDestroy, OnApplicat
         getRepository：拿到对单个 Entity 操作的类，方法同 EntityManager
   */
 
-  @ApiOperation({ summary: "typeorm: 基本find" })
-  @Get("/typeorm/test/list")
+  @ApiOperation({ summary: 'typeorm: 基本find' })
+  @Get('/typeorm/test/list')
   async typeorm_test_list() {
     const result = await this.testRepository.find();
 
     return result;
   }
 
-  @ApiOperation({ summary: "typeorm: 添加" })
-  @Get("/typeorm/add")
+  @ApiOperation({ summary: 'typeorm: 添加' })
+  @Get('/typeorm/add')
   async typeorm_test_add() {
     const t: Test = {
-      name: "李四" + Date.now(),
+      name: '李四' + Date.now(),
       value: `${Date.now()}-${Math.random()}`
     };
 
     // 保存数据
     await this.testRepository.save(t);
 
-    return "添加成功";
+    return '添加成功';
   }
 
-  @ApiOperation({ summary: "全局异常测试" })
-  @Get("/test_global_exception")
+  @ApiOperation({ summary: '全局异常测试' })
+  @Get('/test_global_exception')
   test_global_exception() {
-    throw new UnauthorizedException("用户没有权限");
+    throw new UnauthorizedException('用户没有权限');
   }
 }
