@@ -1,12 +1,11 @@
-import { Body, Controller, Inject, Post } from "@nestjs/common";
+import { Body, Controller, Inject, Post } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { CreateUrlDto } from './dto/create-url.dto';
-import { UrlService } from "./url.service";
+import { UrlService } from './url.service';
 
 @ApiTags('URL')
 @Controller('/collect')
 export class UrlController {
-
   @Inject()
   private readonly urlService: UrlService;
 
@@ -34,14 +33,14 @@ export class UrlController {
   @ApiOperation({ summary: '修改URL' })
   @Post('/url/update')
   async urlUpdate(params: CreateUrlDto) {
-    await this.urlService.updateUrl(params)
+    await this.urlService.updateUrl(params);
     return '修改成功';
   }
 
   @ApiOperation({ summary: '删除URL' })
   @Post('/url/delete')
   async urlDelete(params: { id: string }) {
-    await this.urlService.removeUrl(params.id)
+    await this.urlService.removeUrlById(params.id);
     return '删除成功';
   }
 }
