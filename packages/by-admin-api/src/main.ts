@@ -89,7 +89,7 @@ async function bootstrap() {
 
   // 启动服务
   await app.listen(3000, () => {
-    logger.debug(`项目运行在http:localhost:3000/`);
+    logger.debug(`项目运行在 http:localhost:3000/`);
   });
 }
 
