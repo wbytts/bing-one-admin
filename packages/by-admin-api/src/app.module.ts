@@ -12,8 +12,8 @@ import { serverStaticParams } from './core/static';
 import { configParams } from './core/config';
 import { typeOrmModuleOptions } from './core/orm';
 import { AuthModule } from './modules/auth/auth.module';
-import { SystemModule } from "./modules/system/system.module";
-import { CaptchaModule } from "./modules/captcha/captcha.module";
+import { SystemModule } from './modules/system/system.module';
+import { CaptchaModule } from './modules/captcha/captcha.module';
 
 @Global()
 @Module({
@@ -26,9 +26,10 @@ import { CaptchaModule } from "./modules/captcha/captcha.module";
     CollectModule,
     AuthModule,
     SystemModule,
-    CaptchaModule, // 验证码
+    CaptchaModule // 验证码
   ],
   controllers: [AppController],
+
   providers: [
     AppService,
     {
@@ -39,10 +40,10 @@ import { CaptchaModule } from "./modules/captcha/captcha.module";
         const client = createClient({
           socket: {
             host: 'wbytts.cn', // '127.0.0.1',
-            port: 9902, // 6379
+            port: 9902 // 6379
           },
           database: 0,
-          // password: '123'
+          password: 'xd123qwe'
         });
         await client.connect();
         return client;
@@ -52,5 +53,4 @@ import { CaptchaModule } from "./modules/captcha/captcha.module";
   ],
   exports: ['REDIS_CLIENT', Logger]
 })
-export class AppModule {
-}
+export class AppModule {}

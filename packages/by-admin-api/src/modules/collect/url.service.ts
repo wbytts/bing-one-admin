@@ -13,6 +13,10 @@ export class UrlService {
   @InjectRepository(CollectUrl)
   private urlRepository: Repository<CollectUrl>;
 
+  /**
+   * 保存一个URL
+   * @param url 
+   */
   async addUrl(url: CreateUrlDto) {
     const newUrl: CreateUrlDto = {
       title: url.title,
@@ -22,11 +26,19 @@ export class UrlService {
     await this.urlRepository.save(newUrl)
   }
 
+  /**
+   * 查询所有URL
+   * @returns 
+   */
   async queryAll() {
     return await this.urlRepository.find();
   }
 
-  async removeUrl(id) {
+  /**
+   * 根据id删除一个URL
+   * @param id 
+   */
+  async removeUrlById(id) {
     const item = await this.urlRepository.findOneBy({ id })
     if (item) {
       await this.urlRepository.remove(item);
