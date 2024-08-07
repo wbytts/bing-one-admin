@@ -11,6 +11,11 @@ const routes = [
     name: "home",
     component: HomeView,
   },
+  {
+    path: "/docschina",
+    component: () => import("@/pages/docschina/index.vue"),
+    children: []
+  },
 ];
 
 const router = new VueRouter({

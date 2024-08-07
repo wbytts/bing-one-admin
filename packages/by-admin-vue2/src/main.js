@@ -1,4 +1,6 @@
-import Vue from "vue";
+import '@/styles/global.scss'
+import '@/styles/element-ui.scss'
+import Vue from "vue"; // ESM 引入方式
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import App from "./App.vue";

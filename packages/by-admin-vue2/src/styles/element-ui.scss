@@ -1,0 +1,19 @@
+
+.el-carousel__indicator--horizontal {
+  margin-right: 10px;
+
+  .el-carousel__button {
+    width: 16px !important;
+    height: 16px !important;
+    border-radius: 8px !important;
+  }
+
+  &.is-active {
+    .el-carousel__button {
+      width: 30px !important;
+    }
+  }
+
+}
+
+

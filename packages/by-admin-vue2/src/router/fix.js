@@ -1,7 +1,7 @@
 import VueRouter from "vue-router";
 
-const originalPush = Router.prototype.push
-const originalReplace = Router.prototype.replace
+const originalPush = VueRouter.prototype.push
+const originalReplace = VueRouter.prototype.replace
 
 // https://blog.csdn.net/qq_74281670/article/details/140250726
 VueRouter.prototype.push = function push(location, onResolve, onReject) {
