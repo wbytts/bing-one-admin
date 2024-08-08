@@ -5,10 +5,12 @@ import { UrlService } from "./url.service";
 import { AppModule } from "../../app.module";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { CollectUrl } from "./entities/url.entity";
+import { TagService } from "./tag.service";
+import { TagController } from "./tag.controller";
 
 @Module({
   imports: [forwardRef(() => AppModule), TypeOrmModule.forFeature([CollectUrl])],
-  controllers: [UrlController],
-  providers: [CollectService, UrlService]
+  controllers: [UrlController, TagController],
+  providers: [CollectService, UrlService, TagService]
 })
-export class CollectModule {}
+export class CollectModule { }

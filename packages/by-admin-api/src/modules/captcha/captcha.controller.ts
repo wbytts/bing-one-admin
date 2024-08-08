@@ -3,6 +3,7 @@ import * as svgCaptcha from 'svg-captcha';
 import { RedisClientType } from "redis";
 import { v4 as uuidv4 } from 'uuid';
 import { ApiOperation, ApiTags } from "@nestjs/swagger";
+import { Request } from "express";
 
 @ApiTags("验证码")
 @Controller("captcha")
@@ -37,7 +38,7 @@ export class CaptchaController {
 
   @ApiOperation({ summary: "校验 - 验证码" })
   @Post('verify')
-  verifyCaptcha(@Body() body, @Req() req) {
+  verifyCaptcha(@Body() body, @Req() req ) {
     const { captchaText } = body;
     const storedCaptcha = req.session.captcha;
 

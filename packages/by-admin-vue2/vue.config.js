@@ -7,6 +7,10 @@ module.exports = defineConfig({
       '/docschina': {
         target: 'https://www.docschina.org',
         pathRewrite: { '^/docschina': '' },
+      },
+      '/api': {
+        target: 'http://wbytts.w1.luyouxia.net',
+        pathRewrite: { '^/api': '' },
       }
     }
   }
