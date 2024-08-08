@@ -119,21 +119,21 @@ export class TestController implements OnModuleInit, OnModuleDestroy, OnApplicat
   // 获取 form urlencoded 参数
   @ApiOperation({ summary: 'form urlencoded 参数' })
   @Get('/test_form_urlencoded')
-  test_form_urlencoded() {
+  test_form_urlencoded(@Body() params: { name: string }) {
     return '';
   }
 
   // 获取 form data 参数
   @ApiOperation({ summary: 'form-data参数' })
   @Get('/test_form_data')
-  test_form_data() {
+  test_form_data(@Body() params: { name: string }) {
     return '';
   }
 
   // 获取 application/json 参数
   @ApiOperation({ summary: 'application/json参数' })
   @Get('/test_application_json')
-  test_application_json() {
+  test_application_json(@Body() params: { name: string }) {
     return '';
   }
 

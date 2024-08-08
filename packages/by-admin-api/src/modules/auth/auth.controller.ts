@@ -2,6 +2,8 @@ import { Body, Controller, HttpException, Inject, Post } from '@nestjs/common';
 import { LoginDto } from './dto/login.dto';
 import { ApiBody, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { RedisClientType } from 'redis';
+import { R } from 'src/common/vo/response.vo';
+import { ResponseCode } from 'src/common/enum/response-code.enum';
 
 @ApiTags('登录鉴权')
 @Controller('auth')
@@ -12,24 +14,12 @@ export default class AuthController {
   @ApiOperation({ summary: '用户登录' })
   @Post('/login')
   async login(@Body() params: LoginDto) {
-    // 如果用户名是 by666 可跳过验证码
-    if (params.username !== 'by666') {
-      const captchaText: string = await this.redis.get(`captcha-${params.captchaId}`);
-      if (captchaText !== params.captchaText) {
-        return {
-          code: 200,
-          message: '验证码错误'
-        };
-      }
+    const captchaText: string = await this.redis.get(`captcha-${params.captchaId}`);
+    if (captchaText === params.captchaText) {
+      return R.ok({ token: 'test-token' })
+    } else {
+      return R.error(null, ResponseCode.CAPTCHA_ERROR, "验证码错误")
     }
-
-    return {
-      code: 200,
-      data: {
-        token: 'test-token'
-      },
-      message: '登陆成功'
-    };
   }
 
   @ApiOperation({ summary: '用户注册' })

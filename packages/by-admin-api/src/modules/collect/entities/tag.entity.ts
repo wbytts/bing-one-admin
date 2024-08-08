@@ -10,4 +10,7 @@ export class CollectTag {
 
   @Column({ name: 'remark', length: 500 })
   remark: string;
+
+  @Column({ name: 'color', comment: '标签颜色' })
+  color: string;
 }

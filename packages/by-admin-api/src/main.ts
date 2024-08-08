@@ -30,9 +30,12 @@ async function bootstrap() {
 
   // main.ts -> Factory -> AppModule -> 其他
 
+  // Nest 本身只依赖 HttpServer 接口，并不和具体的库耦合
   // 将类型传递给 NestFactory.create() 函数时，如下例所示，app 对象将具有专用于该特定平台的函数
-  // 底层平台默认采用了 Express
+  // 底层平台默认采用了 Express 
+  // Nest -> HttpServer -> AbstractHttpAdapter -> ExpressHttpAdapter/FastifyHttpAdapter -> Express/Fastify
   // 注意，除非您确实要访问底层平台 API，否则无需指定类型
+  // 如果要换其他底层库, 可以自己继承 AbstractHttpAdapter 去编写一个适配器
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     // 'log', 'error', 'warn', 'debug', 'verbose'
     // logger: false, // 不使用日志
@@ -89,7 +92,7 @@ async function bootstrap() {
 
   // 启动服务
   await app.listen(3000, () => {
-    logger.debug(`项目运行在http:localhost:3000/`);
+    logger.debug(`项目运行在 http:localhost:3000/`);
   });
 }
 
