@@ -32,14 +32,14 @@ export class UrlController {
 
   @ApiOperation({ summary: '修改URL' })
   @Post('/update')
-  async urlUpdate(params: CreateUrlDto) {
+  async urlUpdate(@Body() params: CreateUrlDto) {
     await this.urlService.updateUrl(params);
     return '修改成功';
   }
 
   @ApiOperation({ summary: '根据id删除URL' })
   @Post('/deleteById')
-  async urlDeleteById(params: { id: string }) {
+  async urlDeleteById(@Body()params: { id: string }) {
     await this.urlService.removeUrlById(params.id);
     return '删除成功';
   }
