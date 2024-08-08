@@ -7,9 +7,10 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 import { CollectUrl } from "./entities/url.entity";
 import { TagService } from "./tag.service";
 import { TagController } from "./tag.controller";
+import { CollectTag } from "./entities/tag.entity";
 
 @Module({
-  imports: [forwardRef(() => AppModule), TypeOrmModule.forFeature([CollectUrl])],
+  imports: [forwardRef(() => AppModule), TypeOrmModule.forFeature([CollectUrl, CollectTag])],
   controllers: [UrlController, TagController],
   providers: [CollectService, UrlService, TagService]
 })
