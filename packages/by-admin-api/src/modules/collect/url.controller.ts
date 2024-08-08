@@ -2,6 +2,7 @@ import { Body, Controller, Inject, Post } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { CreateUrlDto } from './dto/create-url.dto';
 import { UrlService } from './url.service';
+import { R } from 'src/common/vo/response.vo';
 
 @ApiTags('URL')
 @Controller('/collect/url')
@@ -34,13 +35,13 @@ export class UrlController {
   @Post('/update')
   async urlUpdate(@Body() params: CreateUrlDto) {
     await this.urlService.updateUrl(params);
-    return '修改成功';
+    return R.ok({ msg: '修改成功' });
   }
 
   @ApiOperation({ summary: '根据id删除URL' })
   @Post('/deleteById')
-  async urlDeleteById(@Body()params: { id: string }) {
+  async urlDeleteById(@Body() params: { id: string }) {
     await this.urlService.removeUrlById(params.id);
-    return '删除成功';
+    return R.ok({ msg: '删除成功' });
   }
 }
