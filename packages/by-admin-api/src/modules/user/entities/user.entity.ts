@@ -3,6 +3,9 @@ import { Role } from './role.entity';
 import { UserProfile } from './user-profile.entity';
 import { UserLog } from './user-log.entity';
 
+/**
+ * 实体类: 用户
+ */
 @Entity({ name: 't_user' })
 export class User {
   @PrimaryGeneratedColumn('uuid')

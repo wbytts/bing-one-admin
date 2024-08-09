@@ -6,13 +6,13 @@ export class CollectUrl {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ name: 'title', length: 255 })
+  @Column({ name: 'title', length: 255, default: '' })
   title: string;
 
   @Column({ name: 'url', type: 'text' })
   url: string;
 
-  @Column({ name: 'remark', length: 500 })
+  @Column({ name: 'remark', length: 500, default: '' })
   remark: string;
 
   @ManyToMany(() => CollectTag)

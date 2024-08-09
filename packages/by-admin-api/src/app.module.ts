@@ -30,6 +30,7 @@ import { CaptchaModule } from './modules/captcha/captcha.module';
   ],
   controllers: [AppController],
 
+  // 声明要往 IoC 容器里提供的对象
   providers: [
     AppService,
     {

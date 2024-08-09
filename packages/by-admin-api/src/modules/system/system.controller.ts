@@ -1,5 +1,6 @@
 import { Controller, Post } from "@nestjs/common";
 import { ApiOperation, ApiTags } from "@nestjs/swagger";
+import { R } from "src/common/vo/response.vo";
 
 
 @ApiTags("系统管理")
@@ -9,11 +10,7 @@ export class SystemController {
   @ApiOperation({ summary: "获取当前系统时间戳" })
   @Post("/timestamp")
   async getCurrentTimestamp() {
-    return {
-      code: 200,
-      message: "请求成功",
-      data: new Date().getTime()
-    };
+    return R.ok(new Date().getTime())
   }
 
 }

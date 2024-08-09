@@ -15,7 +15,7 @@ export class TagController {
   @Post('/create')
   async urlCreate(@Body() params: CreateTagDto) {
     await this.tagService.addTag(params);
-    return '添加成功!';
+    return R.ok({ msg: '添加成功' });
   }
 
   @ApiOperation({ summary: '查询Tag' })
@@ -29,13 +29,13 @@ export class TagController {
   @Post('/update')
   async urlUpdate(params: CreateTagDto) {
     await this.tagService.updateTag(params.id, params);
-    return '修改成功';
+    return R.ok({ msg: '修改成功' });
   }
 
   @ApiOperation({ summary: '根据id删除URL' })
   @Post('/deleteById')
   async urlDeleteById(params: { id: string }) {
     await this.tagService.removeTagById(params.id);
-    return '删除成功';
+    return R.ok({ msg: '删除成功' });
   }
 }

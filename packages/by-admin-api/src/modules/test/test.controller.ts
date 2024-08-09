@@ -31,6 +31,7 @@ import { Express } from 'express';
 import { InjectEntityManager, InjectRepository } from '@nestjs/typeorm';
 import { EntityManager, Repository } from 'typeorm';
 import { Test } from './entities/test.entity';
+import { R } from 'src/common/vo/response.vo';
 
 // applyDecorators：组合多个装饰器
 function OptionalInject(name) {
@@ -201,11 +202,11 @@ export class TestController implements OnModuleInit, OnModuleDestroy, OnApplicat
     @UploadedFile() file: Express.Multer.File
   ) {
     // 文件名乱码问题
-    if (file.originalname) {
-      file.originalname = decodeURIComponent(escape(file.originalname));
-    }
+    // if (file.originalname) {
+    //   file.originalname = decodeURIComponent(escape(file.originalname));
+    // }
 
-    return { params, file, test: '你好啊' };
+    return R.ok({ params, file, test: '你好啊' })
   }
 
   /*
