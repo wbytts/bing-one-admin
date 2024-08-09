@@ -26,7 +26,7 @@ import { CaptchaModule } from './modules/captcha/captcha.module';
     CollectModule,
     AuthModule,
     SystemModule,
-    CaptchaModule // 验证码
+    CaptchaModule, // 验证码
   ],
   controllers: [AppController],
 
@@ -40,11 +40,11 @@ import { CaptchaModule } from './modules/captcha/captcha.module';
       async useFactory() {
         const client = createClient({
           socket: {
-            host: 'wbytts.cn', // '127.0.0.1',
-            port: 9902 // 6379
+            host: '127.0.0.1', // '127.0.0.1',
+            port: 6379 // 6379
           },
           database: 0,
-          password: 'xd123qwe'
+          password: '123'
         });
         await client.connect();
         return client;

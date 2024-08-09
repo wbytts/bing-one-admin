@@ -16,11 +16,21 @@ const routes = [
     component: () => import("@/pages/docschina/index.vue"),
     children: []
   },
+  {
+    path: "/login",
+    component: () => import("@/pages/login/login.vue")
+  },
+
 ];
 
 const router = new VueRouter({
   // mode: 'history', // 是否开启 history 模式
   routes,
 });
+
+router.beforeEach((to, from, next) => {
+  
+  next()
+})
 
 export default router;

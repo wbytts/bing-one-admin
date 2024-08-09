@@ -3,6 +3,8 @@
 pnpm-lock.yaml
 package-lock.json
 
+wq-assets
+
 # Logs
 logs
 *.log
