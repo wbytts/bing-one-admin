@@ -15,7 +15,7 @@ export default class AuthController {
   @Post('/login')
   async login(@Body() params: LoginDto) {
     const captchaText: string = await this.redis.get(`captcha-${params.captchaId}`);
-    if (captchaText === params.captchaText) {
+    if (captchaText && captchaText.toLowerCase() === params.captchaText.toLowerCase()) {
       return R.ok({ token: 'test-token' })
     } else {
       return R.error(null, ResponseCode.CAPTCHA_ERROR, "验证码错误")
